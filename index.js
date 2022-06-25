@@ -139,7 +139,7 @@ const init = () => {
                         answers.email,
                         answers.school
                     )
-                    teamMemeberObjArr.push(intern);
+                    teamMemberObjArr.push(intern);
                     addEmployees();
                 });
         };
