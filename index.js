@@ -104,6 +104,40 @@ const init = () => {
                 addEmployees()
             }); 
         
+            function createIntern() {
+                inquirer
+                    .prompt([
+                        {
+                        type: "input",
+                        name: "id",
+                        message: "What is the Interns Id?",
+                        },
+                        {
+                            type: "input",
+                            name: "name",
+                            message: "What is the Interns name?",
+                        },
+                        {
+                            type: "input",
+                            name: "email",
+                            message: "What is the Interns email?",
+                        },
+                        {
+                            type: "input",
+                            name: "github",
+                            message: "What is the Interns school?",
+                        },
+                    ])
+                    .then(answers => {
+                        const manager = new Intern(
+                            answers.id,
+                            answers.name,
+                            answers.email,
+                            answers.school
+                        )
+                        teamMemeberObjArr.push(intern)
+                        addEmployees()
+                    }); 
     }
 
     function buildTeam() {
