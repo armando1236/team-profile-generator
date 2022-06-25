@@ -1,6 +1,8 @@
 const inquirer = require("inquirer")
 const fs = require('fs')
 const Manager = require("./lib/Manager.js");
+const Engineer = require("./lib/Engineer.js")
+const Intern = require("./lib/Intern")
 const renderTeam = require("./src/html-templates")
 
 const teamMemberObjArr = [];
@@ -29,27 +31,28 @@ const init = () => {
                     name: "officeNumber",
                     message: "What is the Managers Offie Number?",
                 },
-        ])
-        .then(answers => {
-            const manager = new Manager(
-                answers.id,
-                answers.name,
-                answers.email,
-                answers.officeNumber
-            )
-            teamMemeberObjArr.push(manager)
-            addEmployees()
-        })        
+            ])
+            .then(answers => {
+                const manager = new Manager(
+                    answers.id,
+                    answers.name,
+                    answers.email,
+                    answers.officeNumber
+                )
+                teamMemberObjArr.push(manager)
+                addEmployees();
+            })
     };
+
 
     function addEmployees() {
         inquirer
             .prompt([
                 {
-                type: 'list',
-                message: 'What employees would you like to add?',
-                name: 'choice',
-                choices: ['Engineer', 'Intern', "I'm Done"],
+                    type: 'list',
+                    message: 'What employees would you like to add?',
+                    name: 'choice',
+                    choices: ['Engineer', 'Intern', "I'm Done"],
                 },
             ])
             .then((answer) => {
@@ -61,7 +64,7 @@ const init = () => {
                     case "Intern":
                         createIntern();
                         break;
-                        
+
                     default:
                         buildTeam();
                         break;
@@ -69,14 +72,14 @@ const init = () => {
             });
 
 
-    }
+    
     function createEngineer() {
         inquirer
             .prompt([
                 {
-                type: "input",
-                name: "id",
-                message: "What is the Engineer Id?",
+                    type: "input",
+                    name: "id",
+                    message: "What is the Engineer Id?",
                 },
                 {
                     type: "input",
@@ -101,50 +104,57 @@ const init = () => {
                     answers.email,
                     answers.github
                 )
-                teamMemeberObjArr.push(engineer);
+                teamMemberObjArr.push(engineer);
                 addEmployees();
-            }); 
-        
-            function createIntern() {
-                inquirer
-                    .prompt([
-                        {
+            });
+        };
+        function createIntern() {
+            inquirer
+                .prompt([
+                    {
                         type: "input",
                         name: "id",
                         message: "What is the Interns Id?",
-                        },
-                        {
-                            type: "input",
-                            name: "name",
-                            message: "What is the Interns name?",
-                        },
-                        {
-                            type: "input",
-                            name: "email",
-                            message: "What is the Interns email?",
-                        },
-                        {
-                            type: "input",
-                            name: "school",
-                            message: "What is the Interns school?",
-                        },
-                    ])
-                    .then((answers) => {
-                        const intern = new Intern(
-                            answers.id,
-                            answers.name,
-                            answers.email,
-                            answers.school
-                        )
-                        teamMemeberObjArr.push(intern);
-                        addEmployees();
-                    }); 
+                    },
+                    {
+                        type: "input",
+                        name: "name",
+                        message: "What is the Interns name?",
+                    },
+                    {
+                        type: "input",
+                        name: "email",
+                        message: "What is the Interns email?",
+                    },
+                    {
+                        type: "input",
+                        name: "school",
+                        message: "What is the Interns school?",
+                    },
+                ])
+                .then((answers) => {
+                    const intern = new Intern(
+                        answers.id,
+                        answers.name,
+                        answers.email,
+                        answers.school
+                    )
+                    teamMemeberObjArr.push(intern);
+                    addEmployees();
+                });
+        };
+    }
+        function buildTeam() {
+            fs.writeFile("./dist/index.html", renderTeam(teamMemberObjArr), (err) => {
+                if (err)
+                    console.log(err);
+                else {
+                    console.log('Addedd team members!')
+                }
+            })
+        }
+
+        createManager();
     }
 
-    function buildTeam() {
-        fs.writeFile("./dist/index.html", renderTeam(teamMemberObjArr), "utf-8")
-    }
-
-    createManager();
-};
-init();}
+    init()
