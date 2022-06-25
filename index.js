@@ -7,27 +7,28 @@ const teamMemberObjArr = [];
 
 const init = () => {
     const createManager = () => {
-        inquirer.prompt([
-            {
-            type: "input",
-            name: "id",
-            message: "What is the Managers Id?",
-            },
-            {
-                type: "input",
-                name: "name",
-                message: "What is the Managers name?",
-            },
-            {
-                type: "input",
-                name: "email",
-                message: "What is the Managers email?",
-            },
-            {
-                type: "input",
-                name: "officeNumber",
-                message: "What is the Managers Offie Number?",
-            },
+        inquirer
+            .prompt([
+                {
+                    type: "input",
+                    name: "id",
+                    message: "What is the Managers Id?",
+                },
+                {
+                    type: "input",
+                    name: "name",
+                    message: "What is the Managers name?",
+                },
+                {
+                    type: "input",
+                    name: "email",
+                    message: "What is the Managers email?",
+                },
+                {
+                    type: "input",
+                    name: "officeNumber",
+                    message: "What is the Managers Offie Number?",
+                },
         ])
         .then(answers => {
             const manager = new Manager(
@@ -51,13 +52,13 @@ const init = () => {
                 choices: ['Engineer', 'Intern', "I'm Done"],
                 },
             ])
-            .then(answer => {
+            .then((answer) => {
                 switch (answer.choice) {
-                    case 'Engineer':
+                    case "Engineer":
                         createEngineer();
                         break;
 
-                    case 'Intern':
+                    case "Intern":
                         createIntern();
                         break;
                         
@@ -93,15 +94,15 @@ const init = () => {
                     message: "What is the Engineers Github?",
                 },
             ])
-            .then(answers => {
-                const manager = new Engineer(
+            .then((answers) => {
+                const engineer = new Engineer(
                     answers.id,
                     answers.name,
                     answers.email,
                     answers.github
                 )
-                teamMemeberObjArr.push(engineer)
-                addEmployees()
+                teamMemeberObjArr.push(engineer);
+                addEmployees();
             }); 
         
             function createIntern() {
@@ -124,19 +125,19 @@ const init = () => {
                         },
                         {
                             type: "input",
-                            name: "github",
+                            name: "school",
                             message: "What is the Interns school?",
                         },
                     ])
-                    .then(answers => {
-                        const manager = new Intern(
+                    .then((answers) => {
+                        const intern = new Intern(
                             answers.id,
                             answers.name,
                             answers.email,
                             answers.school
                         )
-                        teamMemeberObjArr.push(intern)
-                        addEmployees()
+                        teamMemeberObjArr.push(intern);
+                        addEmployees();
                     }); 
     }
 
@@ -146,5 +147,4 @@ const init = () => {
 
     createManager();
 };
-                
-init();
+init();}

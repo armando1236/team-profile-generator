@@ -43,7 +43,7 @@ const makeTeam = team => {
         `
     }
 
-    const html = [];
+  
 
     html.push(team
         .filter(employee => employee.getRole() === "Engineer")
@@ -68,7 +68,6 @@ const makeTeam = team => {
         `
     }
 
-    const html = [];
 
     html.push(team
         .filter(employee => employee.getRole() === "Intern")
