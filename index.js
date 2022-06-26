@@ -1,9 +1,9 @@
 const inquirer = require("inquirer")
 const fs = require('fs')
-const Manager = require("./lib/Manager.js");
-const Engineer = require("./lib/Engineer.js")
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
-const renderTeam = require("./src/html-templates.js")
+const renderTeam = require("./src/html-templates")
 
 const teamMemberObjArr = [];
 
@@ -36,8 +36,8 @@ const init = () => {
                 const manager = new Manager(
                     answers.name,
                     answers.id,
-                    answers.officeNumber,
                     answers.email,
+                    answers.officeNumber,
                     
                 )
                 teamMemberObjArr.push(manager)
@@ -51,12 +51,12 @@ const init = () => {
             .prompt([
                 {
                     type: 'list',
-                    message: 'What employees would you like to add?',
                     name: 'choice',
+                    message: 'What employees would you like to add?',
                     choices: ['Engineer', 'Intern', "I'm Done"],
                 },
             ])
-            .then((answer) => {
+            .then(answer => {
                 switch (answer.choice) {
                     case "Engineer":
                         createEngineer();
@@ -98,17 +98,17 @@ const init = () => {
                     message: "What is the Engineers Github?",
                 },
             ])
-            .then((answers) => {
+            .then(answers => {
                 const engineer = new Engineer(
                     answers.name,
                     answers.id,
-                    answers.github,
                     answers.email,
+                    answers.github,
                     
                 )
                 teamMemberObjArr.push(engineer);
                 addEmployees();
-            });
+            })
         };
         function createIntern() {
             inquirer
@@ -134,7 +134,7 @@ const init = () => {
                         message: "What is the Interns school?",
                     },
                 ])
-                .then((answers) => {
+                .then(answers => {
                     const intern = new Intern(
                         answers.name,
                         answers.id,
@@ -143,7 +143,7 @@ const init = () => {
                     )
                     teamMemberObjArr.push(intern);
                     addEmployees();
-                });
+                })
         };
     }
         function buildTeam() {
