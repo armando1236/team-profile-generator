@@ -3,7 +3,7 @@ const fs = require('fs')
 const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js")
 const Intern = require("./lib/Intern")
-const renderTeam = require("./src/html-templates")
+const renderTeam = require("./src/html-templates.js")
 
 const teamMemberObjArr = [];
 
@@ -34,10 +34,11 @@ const init = () => {
             ])
             .then(answers => {
                 const manager = new Manager(
-                    answers.id,
                     answers.name,
+                    answers.id,
+                    answers.officeNumber,
                     answers.email,
-                    answers.officeNumber
+                    
                 )
                 teamMemberObjArr.push(manager)
                 addEmployees();
@@ -99,10 +100,11 @@ const init = () => {
             ])
             .then((answers) => {
                 const engineer = new Engineer(
-                    answers.id,
                     answers.name,
+                    answers.id,
+                    answers.github,
                     answers.email,
-                    answers.github
+                    
                 )
                 teamMemberObjArr.push(engineer);
                 addEmployees();
@@ -134,8 +136,8 @@ const init = () => {
                 ])
                 .then((answers) => {
                     const intern = new Intern(
-                        answers.id,
                         answers.name,
+                        answers.id,
                         answers.email,
                         answers.school
                     )

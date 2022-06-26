@@ -2,14 +2,15 @@ const makeTeam = team => {
 
     const generateManagerCard = manager => {
         return `
-        <div class="card" style="width: 18rem;">
+        <div class = "col-lg4-md2 gap-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem; height: 16rem;" id="card">
         
         <div class="card-body">
-          <h5 class="card-title">${manager.id}<br>Manager</h5>
+          <h5 class="card-title">${manager.name}<b><br>Manager</h5>
           
         </div>
         <ul class="list-group list-group-flush"> 
-        <li class="list-group-item">ID:${manager.name}</li>
+        <li class="list-group-item">ID:${manager.id}</li>
         <li class="list-group-item">Office number:${manager.officeNumber}</li>
         <a href="mailto:${manager.email}"><li class="list-group-item">email:${manager.email}</li></a>
         </ul>
@@ -28,7 +29,8 @@ const makeTeam = team => {
 
     const generateEngineerCard = engineer => {
         return `
-        <div class="card" style="width: 18rem;">
+        <div class = "col-lg4-md2 gap-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem; height: 16rem;" id="card">
         
         <div class="card-body">
           <h5 class="card-title">${engineer.name}<br>Engineer</h5>
@@ -53,7 +55,8 @@ const makeTeam = team => {
 
     const generateInternCard = intern => {
         return `
-        <div class="card" style="width: 18rem;">
+        <div class = "col-lg4-m2 gap-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem; height: 16rem;" id="card">
         
         <div class="card-body">
           <h5 class="card-title">${intern.name}<br>Intern</h5>
@@ -86,8 +89,9 @@ module.exports= team => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
+        <title>Team Profile Generator</title>
     </head>
     <body>
     <header>
