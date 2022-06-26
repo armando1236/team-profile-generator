@@ -2,8 +2,8 @@ const makeTeam = team => {
 
     const generateManagerCard = manager => {
         return `
-        <div class = "col-lg4-md2 gap-3 d-flex justify-content-center">
-        <div class="card" style="width: 18rem; height: 16rem;" id="card">
+        <div class = "col-lg-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;" id="card">
         
         <div class="card-body">
           <h5 class="card-title">${manager.name}<b><br>Manager</h5>
@@ -29,8 +29,8 @@ const makeTeam = team => {
 
     const generateEngineerCard = engineer => {
         return `
-        <div class = "col-lg4-md2 gap-3 d-flex justify-content-center">
-        <div class="card" style="width: 18rem; height: 16rem;" id="card">
+        <div class = "col-lg-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;" id="card">
         
         <div class="card-body">
           <h5 class="card-title">${engineer.name}<br>Engineer</h5>
@@ -55,8 +55,8 @@ const makeTeam = team => {
 
     const generateInternCard = intern => {
         return `
-        <div class = "col-lg4-m2 gap-3 d-flex justify-content-center">
-        <div class="card" style="width: 18rem; height: 16rem;" id="card">
+        <div class = "col-lg-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;" id="card">
         
         <div class="card-body">
           <h5 class="card-title">${intern.name}<br>Intern</h5>
